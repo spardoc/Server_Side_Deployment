@@ -20,7 +20,7 @@ def loginPage(request):
 				login(request, user) 
 				return redirect('home')
 			else:
-				messages.info(request, 'Username OR password is incorrect')
+				messages.info(request, 'Usuario o contraseña incorrectos')
 		context = {}
 		return render(request, 'detection/login.html', context)
 	
@@ -34,7 +34,7 @@ def registerPage(request):
 			if form.is_valid():
 				form.save()
 				user = form.cleaned_data.get('username')
-				messages.success(request, 'Account was successfully created for ' + user)
+				messages.success(request, 'Cuenta creada con éxito: ' + user)
 				return redirect('login')
 		context = {'form':form}
 		return render(request, 'detection/register.html', context)

@@ -22,7 +22,7 @@ def post_alert(request):
         serializer.save()
         identify_email_sms(serializer)
     else:
-        return JsonResponse({'error': 'Unable to process data!'}, status=400)
+        return JsonResponse({'error': 'No se puede procesar la información!'}, status=400)
     return Response(request.META.get('HTTP_AUTHORIZATION'))
 
 # Identifies if the user provided an email or a mobile number
