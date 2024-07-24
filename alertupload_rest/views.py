@@ -42,7 +42,7 @@ def identify_email_sms(serializer):
 def send_email(serializer):
     try:
         send_mail(
-            'Weapon Detected!', 
+            'Arma Detectada!', 
             prepare_alert_message(serializer), 
             'samuelpardo1997@gmail.com',
             [serializer.data['alert_receiver']],
