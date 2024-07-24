@@ -56,8 +56,8 @@ def send_email(serializer):
 def prepare_alert_message(serializer):
     uuid_with_slashes = split(serializer.data['image'], ".")
     uuid = split(uuid_with_slashes[3], "/")
-    url = 'http://127.0.0.1:8000/alert' + uuid[2]
-    return 'Weapon Detected! View alert at ' + url
+    url = 'https://server-side-deployment.onrender.com/alert' + uuid[2]
+    return 'Arma Detectada! Ver alertar en ' + url
 
 # Splits string into a list
 def split(value, key):
