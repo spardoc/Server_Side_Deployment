@@ -30,8 +30,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://server-side-deployment.onrender.com']
-
+ALLOWED_HOSTS = ['server-side-deployment.onrender.com']
 
 # Application definition
 
