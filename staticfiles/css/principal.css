@@ -7,6 +7,8 @@
   --text-color: #333;
   --border-color: #ddd;
   --navbar-height: 56px;
+  --button-report-bg: #8e44ad;
+  --button-report-hover-bg: #71368a;
 }
 
 body {
@@ -117,4 +119,22 @@ body {
 .datepicker:focus {
   border-color: var(--accent-color);
   outline: none;
+}
+
+.btn-report {
+  background-color: green;
+  color: var(--secondary-color);
+  border: 2px solid var(--button-report-bg);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+  margin-left: 10px;
+  margin-top: 0; /* Para alinearlo con el botón de búsqueda */
+}
+
+.btn-report:hover {
+  background-color: var(--button-report-hover-bg);
+  color: var(--secondary-color);
+  border: 2px solid var(--button-report-hover-bg);
 }
