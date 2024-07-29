@@ -58,7 +58,7 @@ body {
 .btn-primary {
   background-color: var(--accent-color);
   border: none;
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 5px;
   cursor: pointer;
 }
