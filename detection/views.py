@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -42,23 +43,28 @@ def registerPage(request):
 @login_required(login_url='login')
 def home(request):
 	token = Token.objects.get(user=request.user)
-	uploadAlert = UploadAlert.objects.filter(user_ID = token)
+	uploadAlert = UploadAlert.objects.filter(user_ID=token)
+
+	if 'reporte_del_dia' in request.GET:
+		today = timezone.now().date()
+		uploadAlert = uploadAlert.filter(date_created__date=today)
+	
 	myFilter = DetectionFilter(request.GET, queryset=uploadAlert)
 	uploadAlert = myFilter.qs
 	context = {'myFilter':myFilter, 'uploadAlert':uploadAlert}
-	return render(request, 'detection/dashboard.html',context)
+	return render(request, 'detection/dashboard.html', context)
 
 def logoutUser(request):
 	logout(request)
 	return redirect('login')
 
 def alert(request, pk):
-    uploadAlert = UploadAlert.objects.all()
-    uploadAlert = UploadAlert.objects.filter(image__iexact=str(pk) + ".jpg")
-    myFilter = DetectionFilter(request.GET, queryset=uploadAlert)
-    uploadAlert = myFilter.qs
-    context = {
-        'myFilter': myFilter,
-        'uploadAlert': uploadAlert
-    }
-    return render(request, 'detection/alert.html', context)
+	uploadAlert = UploadAlert.objects.all()
+	uploadAlert = UploadAlert.objects.filter(image__iexact=str(pk) + ".jpg")
+	myFilter = DetectionFilter(request.GET, queryset=uploadAlert)
+	uploadAlert = myFilter.qs
+	context = {
+		'myFilter': myFilter,
+		'uploadAlert': uploadAlert
+	}
+	return render(request, 'detection/alert.html', context)
